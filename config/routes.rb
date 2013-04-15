@@ -1,5 +1,7 @@
 Mooi::Application.routes.draw do
 
+  get "users/new"
+
   root to: "static_pages#home"
 
   # we could have also used match, but it matches all requests
