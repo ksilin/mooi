@@ -51,4 +51,23 @@ describe "StaticPages" do
 
   end
 
+  describe "Contact page" do
+
+    it "should have it's name rendered" do
+      # equivalent to '/static_pages/help'
+      visit static_pages_contact_path
+      p page.document.text
+      page.should have_content "Mooi | Contact us"
+    end
+
+    it "should have it's name in the title" do
+      # equivalent to '/static_pages/help'
+      visit static_pages_contact_path
+      # due to a change in capybara, checking the 'page' is restricted to visible elements only.
+      # for incisible elements like 'title', use 'page.source'
+      page.source.should have_selector('title', text: "Mooi | Contact us")
+    end
+
+  end
+
 end
