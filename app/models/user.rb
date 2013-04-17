@@ -18,4 +18,7 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
 
+  # some DBs do not have case-insensitive indices (like SQLIte and PostgreSQL), so we take care to unify the case, p.253
+  before_save { |user| user.email = email.downcase }
+
 end
