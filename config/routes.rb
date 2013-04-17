@@ -1,14 +1,16 @@
 Mooi::Application.routes.draw do
 
-  get "users/new"
+  get 'users/new'
 
-  root to: "static_pages#home"
+  root to: 'static_pages#home'
 
   # we could have also used match, but it matches all requests
-  get "/home", to: "static_pages#home"
-  get "/about", to: "static_pages#about"
-  get "/help", to: "static_pages#help"
-  get "/contact", to: "static_pages#contact"
+  get '/home' => 'static_pages#home'
+  get '/about' => 'static_pages#about'
+  get '/help' => 'static_pages#help'
+  get '/contact' => 'static_pages#contact'
+
+  get '/signup' => 'users#new'
 
 
   # The priority is based upon order of creation:
